@@ -58,8 +58,7 @@ define(['text!views/templates/app.tmp'], function (tmp) {
 
             require(['views/Todo'], function (todoView) {                                                           
                 var view;
-                
-                todo.set({done : false, order : that.collection.nextOrder });                
+                               
                 view = todoView.create({ model : todo });
                 that.$("#todo-list").append(view.render().el);                
             });            
