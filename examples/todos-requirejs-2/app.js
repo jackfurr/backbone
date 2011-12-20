@@ -1,13 +1,13 @@
-define (['collections/TodoList', 'views/App', 'models/Todo'], function (coll, appView, mod) {
+define (['collections/todos', 'views/app', 'models/todo'], function (coll, appView, mod) {
     'use strict';
     
     var module = {};
     
     module.init = function () {       
         var collection = coll.create(), 
-        	model = mod.create({ 'collection' : collection });  
+            model = mod.create({ 'collection' : collection });  
                   
-		collection.model = model;
+        collection.model = model;
         return appView.create({ 'collection' : collection });             
     };
       

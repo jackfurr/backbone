@@ -1,4 +1,4 @@
-define(['text!views/templates/app.tmp'], function (tmp) {
+define(['text!templates/app/stats.tmp'], function (statsTmp) {
     'use strict';
     
     var module = {}, AppView;
@@ -14,7 +14,7 @@ define(['text!views/templates/app.tmp'], function (tmp) {
         el: $("#todoapp"),
 
         // Our template for the line of statistics at the bottom of the app.
-        statsTemplate: _.template($('#stats-template').html()),
+        statsTemplate: _.template(statsTmp),
 
         // Delegated events for creating new items, and clearing completed ones.
         events: {
@@ -33,11 +33,7 @@ define(['text!views/templates/app.tmp'], function (tmp) {
             this.collection.bind('add',   this.addOne, this);
             this.collection.bind('reset', this.addAll, this);
             this.collection.bind('all',   this.render, this);
-            
-            console.log('collection');
-            console.log(this.collection);
-            
-            
+ 
             this.collection.fetch();
         },
 
@@ -57,9 +53,7 @@ define(['text!views/templates/app.tmp'], function (tmp) {
             var that = this;
 
             require(['views/Todo'], function (todoView) {                                                           
-                var view;
-                               
-                view = todoView.create({ model : todo });
+                var view = todoView.create({ model : todo });
                 that.$("#todo-list").append(view.render().el);                
             });            
         },

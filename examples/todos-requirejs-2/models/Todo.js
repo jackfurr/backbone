@@ -3,7 +3,7 @@ define(function () {
     
     var module = {};
   
-    module.create = function (params) {
+    module.create = function (properties) {
 	    // Todo Model
 	    // ----------
 	
@@ -14,13 +14,12 @@ define(function () {
 	        defaults: function() {
 		    	return {
 		        	done:  false,
-		        	order: params.collection.nextOrder()
+		        	order: properties.collection.nextOrder()
 		    	};
 	        },
 	        
 	        // Toggle the `done` state of this todo item.
 	        toggle: function() {
-	            console.log('toggle');
 	            this.save({done: !this.get("done")});
 	        }
 

@@ -1,4 +1,4 @@
-define(['text!views/templates/todo.tmp'], function (tmp) { 
+define(['text!templates/todo/list.tmp'], function (todoTmp) { 
     'use strict';
     
     var module = {}, TodoView;
@@ -13,7 +13,7 @@ define(['text!views/templates/todo.tmp'], function (tmp) {
         tagName:  "li",
 
         // Cache the template function for a single item.
-        template: _.template($('#item-template').html()),
+        template: _.template(todoTmp),
 
         // The DOM events specific to an item.
         events: {
@@ -31,6 +31,8 @@ define(['text!views/templates/todo.tmp'], function (tmp) {
 
         // Re-render the contents of the todo item.
         render: function() {
+            console.log(todoTmp);
+           
             $(this.el).html(this.template(this.model.toJSON()));
             this.setText();
             return this;
@@ -39,8 +41,6 @@ define(['text!views/templates/todo.tmp'], function (tmp) {
         // To avoid XSS (not that it would be harmful in this particular app),
         // we use `jQuery.text` to set the contents of the todo item.
         setText: function() {
-            console.log('setText');
-            console.log(this.model);
             var text = this.model.get('text');
             this.$('.todo-text').text(text);
             this.input = this.$('.todo-input');
@@ -49,7 +49,6 @@ define(['text!views/templates/todo.tmp'], function (tmp) {
 
         // Toggle the `"done"` state of the model.
         toggleDone: function() {
-            console.log(this.model);
             this.model.toggle();
         },
 
