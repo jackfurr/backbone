@@ -10,7 +10,7 @@
         };
     
     cache = require({ context : 'cache' });
-    cache(['cache'], function (cache) { cache.prime(); });
+    cache(['cache'], function (cache) { cache.prime(true); });
     
     underscore = require({ context : 'underscore' });
     bootstrap = require({ context : 'bootstrap', paths : config.paths });        
