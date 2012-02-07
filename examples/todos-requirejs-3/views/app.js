@@ -52,7 +52,7 @@ define(['text!templates/app/stats.tmp'], function (stats) {
         addOne: function (todo) {
             var that = this;
 
-            require(['views/Todo'], function (todoView) {                                                           
+            require(['views/todo'], function (todoView) {                                                           
                 var view = todoView.create({ model : todo });
                 that.$('#todo-list').append(view.render().el);                
             });            

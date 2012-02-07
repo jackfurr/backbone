@@ -1,7 +1,7 @@
 // Cache Primer
 // ----------
 
-define(['text!app.cache'], function (appCache) {     
+define(['text!manifest.appcache'], function (appCache) {     
     'use strict';
     
     var getFiles = function () {
@@ -14,15 +14,10 @@ define(['text!app.cache'], function (appCache) {
         var interval, count = 0;
         
         var fetch = function () {
-            if ($) {
-                clearInterval(interval);
-                _.each(getFiles(), function(file){ $.ajax({ url : file, dataType : 'html' }); });  // if dataType !html then $ processes scripts     
-            } 
-            if (count > 100) clearInterval(interval); // stop trying in ~10 sec if $ never loads
-            count++;                                   
+            _.each(getFiles(), function(file){ $.ajax({ url : file, dataType : 'html' }); });  // if dataType !html then $ processes scripts                            
         };
         
-        setTimeout(function () { interval = setInterval(function () { fetch(); }, 50); }, 5000); // give app. time to load; then prime cache               
+        setTimeout(function () { fetch(); }, 5000); // give app. time to load; then prime cache               
     };
         
     var module = {};  
