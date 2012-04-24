@@ -1,0 +1,11 @@
+{
+   "name": "Todos",
+   "version": "1.0",
+   "icon-19x19": "img/icon-19x19.png",
+   "icon-29x29": "img/icon-29x29.png",
+   "icon-42x42": "img/icon-42x42.png",
+   "icon-256x256": "img/icon-256x256.png",
+   "description": "An Pokkified Backbone application by Jérôme Gravel-Niquet.",
+   "popup": "index.html",
+   "background_page": "backend.html"
+}
