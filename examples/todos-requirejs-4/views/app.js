@@ -40,16 +40,8 @@ define(['text!templates/app/stats.tmp'], function (stats) {
         },
         
         badge: function () {
-            var todoCount = _.reduce(this.collection.toJSON(), 
-                function (memo, model) { return memo + (!model.done ? 1 : 0);        
-            }, 0);
-            
-            if (todoCount)            
-                pokki.setIconBadge(todoCount);
-            else
-                pokki.removeIconBadge();
-  
-            localStorage.setItem('todos-badge-count-cache', todoCount);
+            var count = this.collection.remaining().length;
+            count ? pokki.setIconBadge(count) : pokki.removeIconBadge();
         },
 
         // Re-rendering the App just means refreshing the statistics -- the rest
@@ -103,12 +95,8 @@ define(['text!templates/app/stats.tmp'], function (stats) {
             if (val == '' || val == this.input.attr('placeholder')) return;
             var show = function(){ tooltip.show().fadeIn(); };
             this.tooltipTimeout = _.delay(show, 1000);
-        },
+        }
         
-        minimize : function () {
-            pokki.hide();            
-        }        
-
     });
     
     module.create = function (properties) {

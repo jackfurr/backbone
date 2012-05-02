@@ -1,6 +1,10 @@
 ;(function () {
-    var todoCount = localStorage.getItem('todos-badge-count-cache');
+    var todos = JSON.parse(localStorage.getItem('todos')), count = 0, key;
     
-    if (todoCount)
-        pokki.setIconBadge(todoCount);
+    for (key in todos) {
+        if (!todos[key].done)
+            count++;
+    }
+    
+    count ? pokki.setIconBadge(count) : pokki.removeIconBadge();
 })();
