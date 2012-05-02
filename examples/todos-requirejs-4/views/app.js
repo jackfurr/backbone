@@ -44,7 +44,11 @@ define(['text!templates/app/stats.tmp'], function (stats) {
                 function (memo, model) { return memo + (!model.done ? 1 : 0);        
             }, 0);
             
-            pokki.setIconBadge(todoCount);   
+            if (todoCount)            
+                pokki.setIconBadge(todoCount);
+            else
+                pokki.removeIconBadge();
+  
             localStorage.setItem('todos-badge-count-cache', todoCount);
         },
 
@@ -102,7 +106,7 @@ define(['text!templates/app/stats.tmp'], function (stats) {
         },
         
         minimize : function () {
-            pokki.closePopup();            
+            pokki.hide();            
         }        
 
     });

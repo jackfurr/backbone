@@ -310,33 +310,6 @@ html {
   -webkit-transform:rotate(180deg);
 }
 
-
-
-
-
-
-
-
-/* Minimize Pokki button */
-a#minimize {
-    display: block;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    width: 21px;
-    height: 12px;
-    cursor: pointer;
-    background: #555 url(img/minimize.png) 0px -2px no-repeat;
-    border-bottom-left-radius: 3px;
-    -webkit-transition: background-color 0.3s linear;
-}
-a#minimize:hover {
-    background-color: #383d43;
-}
-a#minimize:active {
-    background-position: 0px -1px;
-}
-
 /* Scrollable area */
 .scrollable {
     overflow-x: hidden;
