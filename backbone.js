@@ -389,6 +389,7 @@
     if (options.comparator) this.comparator = options.comparator;
     _.bindAll(this, '_onModelEvent', '_removeReference');
     this._reset();
+    this.cid = _.uniqueId('c');
     if (models) this.reset(models, {silent: true});
     this.initialize.apply(this, arguments);
   };
