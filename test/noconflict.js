@@ -1,12 +1,12 @@
-$(document).ready(function() {
+(function() {
 
   module("Backbone.noConflict");
-  
-  test('Backbone.noConflict', function() {
+
+  test('noConflict', 2, function() {
     var noconflictBackbone = Backbone.noConflict();
-    equals(window.Backbone, undefined, 'Returned window.Backbone');
+    equal(window.Backbone, undefined, 'Returned window.Backbone');
     window.Backbone = noconflictBackbone;
-    equals(window.Backbone, noconflictBackbone, 'Backbone is still pointing to the original Backbone');
+    equal(window.Backbone, noconflictBackbone, 'Backbone is still pointing to the original Backbone');
   });
 
-});
+})();
